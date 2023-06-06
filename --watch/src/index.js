@@ -1,94 +1,73 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+//
 import Provider from "./context/Provider";
-import ErrorPage from "./components/pages/ErrorPage";
-import Header from "./components/partials/Header";
-import Page1 from "./components/pages/Page1";
-import Page2 from "./components/pages/Page2";
-import Page3 from "./components/pages/Page3";
-import PageProfile from "./components/pages/ProfilePage";
-import PageLogin from "./components/pages/LoginPage";
-import PageLanding from "./components/pages/LandingPage";
-import ResumeDetail from "./components/pages/ResumeDetail";
-import PDF from "./components/pages/PDF";
+import ErrorPage from "./pages/ErrorPage";
+import LandingPage from "./pages/LandingPage";
+import Header from "./pages/partials/Header";
+import LoginPage from "./pages/LoginPage";
+import AboutPage from "./pages/AboutPage";
+import Page1 from "./pages/Page1";
+import Page2 from "./pages/Page2";
+import Page3 from "./pages/Page3";
+import Check from "./pages/Check";
+import ResumePage from "./pages/ResumePage";
+
+//
+const root = ReactDOM.createRoot(document.getElementById("root"));
 //
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <>
+      <div className="h-auto">
         <Header />
         <Outlet />
-      </>
+      </div>
     ),
     errorElement: <ErrorPage />,
     children: [
       {
         path: "",
-        //element: <PageControl reqPage={1} />, //<PageProfile />,
-        element: <PageLanding />,
+        element: <LandingPage />,
       },
       {
         path: "login",
-        // element: <PageControl reqPage={0} />,
-        element: <PageLogin />,
+        //element: <Check page="LoginPage" />,
+        element: <LoginPage />,
       },
-      ,
       {
-        path: "profile",
-        element: (
-          <>
-            <Outlet />
-          </>
-        ),
-        children: [
-          {
-            path: "",
-            // element: <PageControl reqPage={1} />,
-            element: <PageProfile />,
-          },
-          {
-            path: "page1",
-            // element: <PageControl reqPage={101} />,
-            element: <Page1 />,
-          },
-          {
-            path: "page2",
-            //element: <PageControl reqPage={102} />,
-            element: <Page2 />,
-          },
-          {
-            path: "page3",
-            // element: <PageControl reqPage={103} />,
-            element: <Page3 />,
-          },
-          {
-            path: "myresume",
-            // element: <PageControl reqPage={103} />,
-            element: <ResumeDetail />,
-          },
-          {
-            path: "myresume-pdf",
-            // element: <PageControl reqPage={103} />,
-            element: <PDF />,
-          },
-        ],
+        path: "about",
+        element: <AboutPage />,
       },
-      ,
+      {
+        path: "resume",
+        element: <ResumePage />,
+        //element: <Check page="ResumePage" />,
+      },
+      {
+        path: "resume-page-1",
+        // element: <Check page="Page1" />,
+        element: <Page1 />,
+      },
+      {
+        path: "resume-page-2",
+        // element: <Check page="Page2" />,
+        element: <Page2 />,
+      },
+      {
+        path: "resume-page-3",
+        // element: <Check page="Page3" />,
+        element: <Page3 />,
+      },
     ],
   },
 ]);
-const root = ReactDOM.createRoot(document.getElementById("root"));
+//
 root.render(
   <Provider>
     <RouterProvider router={router} />
   </Provider>
-  /*
-  
-git add .
-git commit -m "pokath"
-git push
-
-  */
 );

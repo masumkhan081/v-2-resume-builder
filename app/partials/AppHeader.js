@@ -5,13 +5,8 @@ import React from "react";
 export default function AppHeader() {
   return (
     <div>
-      <Box sx={{ m: 5, p: 10, border: "1px solid grey", height: "100px" }}>
-        <Button
-          variant="outlined"
-          sx={{ color: "black", backgroundColor: "blanchedalmond" }}
-        >
-          Save working!
-        </Button>
+      <Box sx={{ m: 5, p: 10, border: "1px solid grey", height: "50px" }}>
+        <span>Target Final Deploy: June 10, 2023</span>
       </Box>
     </div>
   );
